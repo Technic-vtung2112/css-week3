@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đại học FPT | Trải nghiệm thành công</title>
+    <style>
+        /* --- THIẾT LẬP CHUNG --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        :root {
+            --fpt-orange: #F26F21;
+            --dark-blue: #1A2B4C;
+            --bg-light: #F8FAFC;
+            --text-gray: #475569;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #0f172a;
+            background-color: var(--bg-light);
+        }
+
+        h1, h2, h3 {
+            color: var(--dark-blue);
+        }
+
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--fpt-orange);
+            margin: 15px auto 0;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--fpt-orange);
+            text-decoration: none;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            max-width: 100%;
+            height: 70vh;
+            background: linear-gradient(rgba(26, 43, 76, 0.7), rgba(26, 43, 76, 0.7)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1600&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            color: var(--fpt-orange);
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- LỊCH SỬ --- */
+        .history-content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            border-left: 5px solid var(--fpt-orange);
+        }
+
+        /* --- NGÀNH HỌC (CSS GRID CƠ BẢN) --- */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .program-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            border-bottom: 4px solid var(--fpt-orange);
+        }
+
+        .program-card h3 {
+            color: var(--fpt-orange);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .program-card ul {
+            list-style-position: inside;
+            color: var(--text-gray);
+            margin-top: 15px;
+        }
+
+        .program-card li {
+            margin-bottom: 8px;
+        }
+
+        /* --- CHI PHÍ HỌC TẬP --- */
+        .fee-table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: var(--dark-blue);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+            font-weight: bold;
+            color: var(--fpt-orange);
+            font-size: 1.1rem;
+        }
+
+        /* --- VIDEO NỔI BẬT --- */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Tỷ lệ 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- SỰ KIỆN LỚN (CSS GRID TRUNG BÌNH) --- */
+        /* Sử dụng span để tạo lưới ảnh nghệ thuật */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 250px;
+            gap: 15px;
+        }
+
+        .event-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.4s ease;
+        }
+
+        .event-item {
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .event-item:hover .event-img {
+            transform: scale(1.05);
+        }
+
+        .event-label {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(26, 43, 76, 0.85);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Cấu hình span cho Grid */
+        .event-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2; /* Ảnh lớn nhất */
+        }
+        .event-item:nth-child(2) {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+        .event-item:nth-child(3) {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+        .event-item:nth-child(4) {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark-blue);
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .events-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .event-item:nth-child(1), .event-item:nth-child(2) {
+                grid-column: span 2;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">FPT UNIVERSITY</a>
+    </header>
+
+    <div class="hero">
+        <div>
+            <h1>Đại học FPT</h1>
+            <p>Trường học của thế hệ kiến tạo. Môi trường giàu tính trải nghiệm, đề cao thực hành và phát triển tư duy toàn cầu.</p>
+        </div>
+    </div>
+
+    <section id="history">
+        <h2 class="section-title">Lịch sử Hình thành</h2>
+        <div class="history-content">
+            <p>Thành lập năm 2006, Đại học FPT ra đời với khát vọng đổi mới giáo dục đại học tại Việt Nam. Trực thuộc tập đoàn FPT, trường tiên phong trong việc gắn kết đào tạo với thực tiễn doanh nghiệp. Trải qua hơn một thập kỷ, FPTU đã vươn mình trở thành hệ thống giáo dục quy mô với các campus trải dài trên toàn quốc (Hà Nội, TP.HCM, Đà Nẵng, Cần Thơ, Quy Nhơn), đạt xếp hạng chuẩn quốc tế QS Stars.</p>
+        </div>
+    </section>
+
+    <section id="programs">
+        <h2 class="section-title">Chuyên ngành Đào tạo chi tiết</h2>
+        <div class="programs-grid">
+            <div class="program-card">
+                <h3>Thiết kế Mỹ thuật số</h3>
+                <p>Khối ngành dành cho những người đam mê sáng tạo hình ảnh, nơi tư duy mỹ thuật kết hợp với công cụ đồ họa hiện đại.</p>
+                <ul>
+                    <li>Tư duy bố cục và truyền thông thị giác (Visual Communication).</li>
+                    <li>Thực hành vẽ phác thảo (Wacom), minh họa kỹ thuật số.</li>
+                    <li>Sử dụng thành thạo bộ công cụ Adobe (Photoshop, InDesign...).</li>
+                    <li>Thiết kế UI/UX và xử lý video/âm thanh.</li>
+                </ul>
+            </div>
+            
+            <div class="program-card">
+                <h3>Công nghệ Thông tin</h3>
+                <p>Khối ngành thế mạnh cốt lõi của FPT, tập trung vào lập trình, thuật toán và phát triển phần mềm chuẩn doanh nghiệp.</p>
+                <ul>
+                    <li>Nắm vững nền tảng cấu trúc dữ liệu và giải thuật.</li>
+                    <li>Thực hành sâu các ngôn ngữ lập trình như C, Java, HTML/CSS.</li>
+                    <li>Thiết kế và tối ưu hóa hệ thống cơ sở dữ liệu.</li>
+                    <li>Kỹ năng gỡ lỗi (debugging) và phát triển dự án thực tế.</li>
+                </ul>
+            </div>
+
+            <div class="program-card">
+                <h3>Quản trị Kinh doanh</h3>
+                <p>Đào tạo những nhà lãnh đạo và chuyên gia kinh tế trong kỷ nguyên chuyển đổi số, với tư duy kinh doanh nhạy bén.</p>
+                <ul>
+                    <li>Digital Marketing và Quản trị truyền thông.</li>
+                    <li>Kinh doanh quốc tế và thương mại điện tử.</li>
+                    <li>Phân tích dữ liệu kinh doanh và lập kế hoạch chiến lược.</li>
+                    <li>Phát triển kỹ năng quản lý thời gian và dự án.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="tuition">
+        <h2 class="section-title">Chi phí Tổng 4 năm học (Ước tính)</h2>
+        <p style="text-align: center; margin-bottom: 20px; color: var(--text-gray);">*Lưu ý: Bảng chi phí mang tính chất tham khảo cho toàn bộ lộ trình (Bao gồm chương trình tiếng Anh chuẩn bị và 9 học kỳ chuyên ngành). Mức phí có thể thay đổi tùy campus và tỷ giá.</p>
+        <div class="fee-table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Giai đoạn học tập</th>
+                        <th>Thời gian</th>
+                        <th>Học phí ước tính (VND)</th>
+                        <th>Ghi chú</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Chương trình Tiếng Anh dự bị (Little UK)</td>
+                        <td>Tối đa 6 mức (2 tháng/mức)</td>
+                        <td>~ 68.000.000 VNĐ</td>
+                        <td>Sinh viên có IELTS 6.0 sẽ được miễn hoàn toàn học phí phần này.</td>
+                    </tr>
+                    <tr>
+                        <td>Học kỳ Nền tảng (Giáo dục Quốc phòng & Thể chất)</td>
+                        <td>1 học kỳ</td>
+                        <td>~ 11.000.000 VNĐ</td>
+                        <td>Học tập tập trung, rèn luyện võ Vovinam và kỷ luật.</td>
+                    </tr>
+                    <tr>
+                        <td>Chương trình Chuyên ngành chính</td>
+                        <td>9 học kỳ (Bao gồm kỳ thực tập OJT)</td>
+                        <td>~ 260.000.000 VNĐ</td>
+                        <td>Bao gồm giáo trình bản quyền quốc tế nhập khẩu trực tiếp.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tổng cộng chi phí (Ước tính)</strong></td>
+                        <td><strong>3.5 - 4 năm</strong></td>
+                        <td><strong>~ 339.000.000 VNĐ</strong></td>
+                        <td>Chưa bao gồm các khoản phí sinh hoạt, KTX và dịch vụ ngoài.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="videos">
+        <h2 class="section-title">Video Nổi bật về FPTU</h2>
+        <div class="video-grid">
+            <div class="video-wrapper">
+                <!-- Chèn video giới thiệu ĐH FPT (Sử dụng mã nhúng iFrame chuẩn của YouTube) -->
+                <iframe src="https://www.youtube.com/embed/Y0n6wYxV9Kk" title="Đại học FPT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-wrapper">
+                <!-- Chèn video trải nghiệm sinh viên -->
+                <iframe src="https://www.youtube.com/embed/Pj1yWqA1P2E" title="Trải nghiệm ĐH FPT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="events">
+        <h2 class="section-title">Sự kiện & Phong trào Lớn</h2>
+        <div class="events-grid">
+            <!-- Sử dụng CSS Grid span để tạo bố cục ảnh ghép -->
+            <div class="event-item">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="FPT Hola Fest" class="event-img">
+                <div class="event-label">Hola Fest / Lễ hội Âm nhạc</div>
+            </div>
+            <div class="event-item">
+                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80" alt="Khai giảng FPT" class="event-img">
+                <div class="event-label">Lễ Khai giảng & Tôn vinh</div>
+            </div>
+            <div class="event-item">
+                <img src="https://images.unsplash.com/photo-1511578314322-379f0747cb8f?w=600&q=80" alt="Thiết kế mỹ thuật số triển lãm" class="event-img">
+                <div class="event-label">Triển lãm Đồ án Nước (OJT)</div>
+            </div>
+            <div class="event-item">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="Cuộc thi công nghệ" class="event-img">
+                <div class="event-label">Hackathon & Techday</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Đồ án môn học. Được xây dựng bằng HTML/CSS & Grid Layout.</p>
+    </footer>
+
+</body>
+</html>
