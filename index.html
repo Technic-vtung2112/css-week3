@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đại học FPT | Trải nghiệm thành công</title>
     <style>
-        /* --- THIẾT LẬP CHUNG --- */
+        
         * {
             margin: 0;
             padding: 0;
@@ -53,7 +53,7 @@
             margin: 15px auto 0;
         }
 
-        /* --- HEADER --- */
+        
         header {
             background-color: #fff;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -73,7 +73,7 @@
             text-decoration: none;
         }
 
-        /* --- HERO SECTION --- */
+        
         .hero {
             max-width: 100%;
             height: 70vh;
@@ -98,7 +98,7 @@
             margin: 0 auto;
         }
 
-        /* --- LỊCH SỬ --- */
+        
         .history-content {
             background: #fff;
             padding: 40px;
@@ -109,7 +109,7 @@
             border-left: 5px solid var(--fpt-orange);
         }
 
-        /* --- NGÀNH HỌC (CSS GRID CƠ BẢN) --- */
+        
         .programs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -145,7 +145,7 @@
             margin-bottom: 8px;
         }
 
-        /* --- CHI PHÍ HỌC TẬP --- */
+        
         .fee-table-container {
             overflow-x: auto;
         }
@@ -178,7 +178,7 @@
             font-size: 1.1rem;
         }
 
-        /* --- VIDEO NỔI BẬT --- */
+        
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -202,8 +202,7 @@
             height: 100%;
         }
 
-        /* --- SỰ KIỆN LỚN (CSS GRID TRUNG BÌNH) --- */
-        /* Sử dụng span để tạo lưới ảnh nghệ thuật */
+        
         .events-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -241,10 +240,10 @@
             font-size: 0.9rem;
         }
 
-        /* Cấu hình span cho Grid */
+        
         .event-item:nth-child(1) {
             grid-column: span 2;
-            grid-row: span 2; /* Ảnh lớn nhất */
+            grid-row: span 2; 
         }
         .event-item:nth-child(2) {
             grid-column: span 2;
@@ -259,7 +258,7 @@
             grid-row: span 1;
         }
 
-        /* --- FOOTER --- */
+        
         footer {
             background-color: var(--dark-blue);
             color: #94a3b8;
@@ -268,7 +267,7 @@
             margin-top: 50px;
         }
 
-        /* Responsive */
+        
         @media (max-width: 768px) {
             .events-grid {
                 grid-template-columns: 1fr 1fr;
@@ -384,11 +383,11 @@
         <h2 class="section-title">Video Nổi bật về FPTU</h2>
         <div class="video-grid">
             <div class="video-wrapper">
-                <!-- Chèn video giới thiệu ĐH FPT (Sử dụng mã nhúng iFrame chuẩn của YouTube) -->
+                
                 <iframe src="https://www.youtube.com/embed/Y0n6wYxV9Kk" title="Đại học FPT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="video-wrapper">
-                <!-- Chèn video trải nghiệm sinh viên -->
+                
                 <iframe src="https://www.youtube.com/embed/Pj1yWqA1P2E" title="Trải nghiệm ĐH FPT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
@@ -397,7 +396,7 @@
     <section id="events">
         <h2 class="section-title">Sự kiện & Phong trào Lớn</h2>
         <div class="events-grid">
-            <!-- Sử dụng CSS Grid span để tạo bố cục ảnh ghép -->
+            
             <div class="event-item">
                 <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="FPT Hola Fest" class="event-img">
                 <div class="event-label">Hola Fest / Lễ hội Âm nhạc</div>
